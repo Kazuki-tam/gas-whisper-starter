@@ -1,0 +1,40 @@
+{
+  "title": "gas-gpt-starter",
+  "description": "gas-gpt-starter is a starter kit to use GPT-3 in Google Apps Script.",
+  "tasks": {
+    "login": "deno run -A npm:@google/clasp@2.4.2 login",
+    "open": "deno run -A npm:@google/clasp@2.4.2 open",
+    "push": "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write npm:@google/clasp@2.4.2 push -f",
+    "clean": "deno run --allow-write _tasks/clean.ts",
+    "build": "deno run --allow-env --allow-net --allow-read --allow-run --allow-write _tasks/build.ts",
+    "deploy": "deno task build && deno task push"
+  },
+  "lint": {
+    "files": {
+      "include": [
+        "src",
+        "_tasks"
+      ]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": [
+        "src",
+        "_tasks"
+      ]
+    }
+  },
+  "test": {
+    "files": {
+      "include": ["src/"],
+      "exclude": ["src/testdata/"]
+    }
+  },
+  "compilerOptions": {
+    "types": [
+      // https://github.com/Kazuki-tam/deno-gas-types
+      "https://raw.githubusercontent.com/Kazuki-tam/deno-gas-types/main/types/index.d.ts"
+    ]
+  }
+}
