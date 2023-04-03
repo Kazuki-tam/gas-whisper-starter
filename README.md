@@ -1,18 +1,17 @@
-# gas-gpt-starter
+# gas-whisper-starter
 
-`gas-gpt-starter` is a starter kit to use GPT-3 and ChatGPT in Google Apps Script.
-You can clone [this sample sheet](https://docs.google.com/spreadsheets/d/1xYZbBp4TFuSxOfjsW0HJtDCS3UEI5nWYd2FfPxEoLnQ/edit?usp=sharing) if you want to use GPT-3 and ChatGPT function immediately without deployment.
+`gas-whisper-starter` is a starter kit to use Whisper in Google Apps Script. The `WHISPER` function provided by this kit can convert an audio file's URL into text on Google Sheets.
 
-Note: You need to set the OpenAI API key into script properties even though you cloned the sample sheet.
+Note: You need to set the OpenAI API key into script properties.
 
 [👉 Check out how to add script properties.](https://developers.google.com/apps-script/guides/properties#manage_script_properties_manually)
 
 ## Status
 
-[![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-gpt-starter)](https://github.com/Kazuki-tam/gas-gpt-starter/releases/tag/v0.0.1)
-[![Issues](https://img.shields.io/github/issues/Kazuki-tam/gas-gpt-starter)](https://github.com/Kazuki-tam/gas-gpt-starter/issues)
+[![Release (latest by date)](https://img.shields.io/github/v/release/Kazuki-tam/gas-whisper-starter)](https://github.com/Kazuki-tam/gas-whisper-starter/releases/tag/v0.0.1)
+[![Issues](https://img.shields.io/github/issues/Kazuki-tam/gas-whisper-starter)](https://github.com/Kazuki-tam/gas-whisper-starter/issues)
 ![Maintenance](https://img.shields.io/maintenance/yes/2023)
-![Release date](https://img.shields.io/github/release-date/Kazuki-tam/gas-gpt-starter)
+![Release date](https://img.shields.io/github/release-date/Kazuki-tam/gas-whisper-starter)
 
 ## Features
 - Just deploy this project code without development
@@ -22,7 +21,7 @@ Note: You need to set the OpenAI API key into script properties even though you 
 ## Main dependencies
 
 - [Google Apps Script](https://workspace.google.co.jp/intl/en/products/apps-script/)
-- [OpenAI API](https://beta.openai.com/docs/api-reference/introduction)
+- [Whisper API](https://platform.openai.com/docs/api-reference/audio)
 - [Clasp](https://github.com/google/clasp)
 - [esbuild](https://esbuild.github.io/)
 
@@ -74,53 +73,26 @@ Deploy your code to the existing project.
 deno task deploy
 ```
 
-### CHATGPT function
+### WHISPER function
 1. Authorize this project's script by execution
-2. Use `=CHATGPT()` in your Google Workspace
+2. Use `=WHISPER()` in your Google Workspace
 
 You can add a system message with the second argument.
 
 ```
-CHATGPT(prompt, system)
+WHISPER(URL)
 
 // Example 1 on Google Sheets
-=CHATGPT("Hello, world!")
+=WHISPER("https://drive.google.com/file/d/xxxxxxxxxxxxx/view")
 
 // Example 2 on Google Sheets
-=CHATGPT(A1, "You are a helpful assistant.")
+=WHISPER(A1)
 ```
 
-#### CHATGPT Parameters
-1. prompt: The prompt to generate completions.
-2. system: The system message to format response.
+#### WHISPER Parameter
+URL: The audio file's url
 
-### GPT-3 function
-
-1. Authorize this project's script by execution
-2. Use `GPT3()` in your Google Workspace
-
-```
-GPT3(prompt, maxTokens, model, temperature)
-
-// Example 1 on Google Sheets
-=GPT3("Hello, world!")
-
-// Example 2 on Google Sheets
-=GPT3(A1, 200)
-
-// Example 3 on Google Sheets
-=GPT3(A1, 300, "text-babbage-001", 0.5)
-```
-
-![GPT3 function on Google Sheets](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vjh3uvjlironx80jrykx.png)
-
-#### GPT-3 Parameters
-1. prompt: The prompt to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
-2. maxTokens: The maximum number of tokens to generate in the completion.
-3. model: ID of the model to use.
-4. temperature: What sampling temperature to use. Higher values means the model will take more risks.
-
-[📖 Learn more parameters](https://beta.openai.com/docs/api-reference/completions/create)
+Please make sure that your audio file is set to public sharing if you upload it.
 
 ## Available Commands
 
@@ -142,18 +114,13 @@ Open the current directory's clasp project on script.google.com.
 deno task open
 ```
 
-## ChatGPT
-`gpt-3.5-turbo` is supported in this project.
+## Create transcription with Whisper
+You can easily convert audio into text using the WHISPER function.
+The function uses Whisper model.
 
-## GPT-3
-You can use four main models with different levels of power suitable for different tasks.
+The following input file types are supported: mp3, mp4, mpeg, mpga, m4a, wav, and webm.
 
-- text-davinci-003
-- text-curie-001
-- text-babbage-001
-- text-ada-001
-
-[📖 Learn more API reference](https://platform.openai.com/docs/api-reference/introduction)
+[📖 Learn more API reference](https://platform.openai.com/docs/api-reference/audio)
 
 ## License
 MIT
