@@ -85,9 +85,12 @@ You can add a system message with the second argument.
 WHISPER(URL)
 
 // Example 1 on Google Sheets
-=WHISPER("https://drive.google.com/file/d/xxxxxxxxxxxxx/view")
+=WHISPER("https://example/sample.mp3")
 
 // Example 2 on Google Sheets
+=WHISPER("https://drive.google.com/file/d/xxxxxxxxxxxxx/view")
+
+// Example 3 on Google Sheets
 =WHISPER(A1)
 ```
 
