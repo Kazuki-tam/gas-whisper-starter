@@ -2,6 +2,8 @@
 
 `gas-whisper-starter` is a starter kit to use Whisper in Google Apps Script. The `WHISPER` function provided by this kit can convert an audio file's URL into text on Google Sheets.
 
+https://user-images.githubusercontent.com/36143987/229478377-9ac4de15-c3d4-4342-b20d-34aff1eac0b1.mov
+
 Note: You need to set the OpenAI API key into script properties.
 
 [👉 Check out how to add script properties.](https://developers.google.com/apps-script/guides/properties#manage_script_properties_manually)
